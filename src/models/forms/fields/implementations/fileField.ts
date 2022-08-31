@@ -5,7 +5,7 @@ import { FIELD_TYPE } from "../fieldType";
 /**
  * Represents a file field. The values of a file field are URLs which point to where the files are uploaded.
  */
-export class FileField extends Field<string[]> {
+export class FileField extends Field<string[], FileField> {
 
     /**
      * The constructor.
@@ -15,7 +15,11 @@ export class FileField extends Field<string[]> {
      *               uploaded to a file store of our choice.
      * @param required. The field that indicates whether value needs to be set or not.
      */
-    constructor(id: string, value: string[], required: boolean, validators: Validator<string[]>[] = []) {
+    constructor(id: string, value: string[] | null, required: boolean, validators: Validator<string[]>[] = []) {
         super(id, FIELD_TYPE.FILE, value, required, validators)
+    }
+
+    public duplicate(id: string): FileField {
+        return new FileField(id, this.value, this.required, this.validators)
     }
 }

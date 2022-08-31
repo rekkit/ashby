@@ -2,7 +2,7 @@ import { FIELD_TYPE } from "../fieldType";
 import { SingleSelectDropdownFieldAbstract } from "../abstract/singleSelectDropdownFieldAbstract";
 import { ArrayContainsValueValidator } from "../../../../validators/arrayContainsValueValidator";
 
-export class BooleanField extends SingleSelectDropdownFieldAbstract<boolean> {
+export class BooleanField extends SingleSelectDropdownFieldAbstract<boolean, BooleanField> {
 
     /**
      * The constructor.
@@ -23,5 +23,9 @@ export class BooleanField extends SingleSelectDropdownFieldAbstract<boolean> {
             required,
             [true, false],
             [new ArrayContainsValueValidator<boolean>([true, false])])
+    }
+
+    public duplicate(id: string): BooleanField {
+        return new BooleanField(id, this.value, this.required)
     }
 }

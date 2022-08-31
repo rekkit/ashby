@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import { Form } from '../src/models/forms/form'
+import { Section } from '../src/models/forms/section'
 import { TextField } from '../src/models/forms/fields/implementations/textField'
 import { SingleSelectDropdownField } from '../src/models/forms/fields/implementations/singleSelectDropdownField'
 import { Dependency } from '../src/models/forms/fields/dependency';
@@ -11,7 +11,7 @@ describe('Test the form class.', () => {
     test('adding a form field.', () => {
 
         // Create the form
-        let form: Form = new Form(v4())
+        let form: Section = new Section(v4())
 
         // Create a text field and add it
         let tfId = v4()
@@ -30,7 +30,7 @@ describe('Test the form class.', () => {
     test('invalid form field makes form invalid.', () => {
 
         // Create the form
-        let form: Form = new Form(v4())
+        let form: Section = new Section(v4())
 
         // Create a text field and add it
         let tfId = v4()
@@ -49,7 +49,7 @@ describe('Test the form class.', () => {
     test('dependency makes field invisible.', () => {
 
         // Create the form
-        let form: Form = new Form(v4())
+        let form: Section = new Section(v4())
 
         // Create a text field and add it
         let tfId = v4()
@@ -76,7 +76,7 @@ describe('Test the form class.', () => {
     test('deleting dependency makes field visible.', () => {
 
         // Create the form
-        let form: Form = new Form(v4())
+        let form: Section = new Section(v4())
 
         // Create a text field and add it
         let tfId = v4()

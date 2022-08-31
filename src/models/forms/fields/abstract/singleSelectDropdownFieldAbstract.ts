@@ -5,7 +5,7 @@ import { Field } from "./field";
 /**
  * The class that represents a dropdown where only a single value can be selected.
  */
-export abstract class SingleSelectDropdownFieldAbstract<T> extends Field<T> {
+export abstract class SingleSelectDropdownFieldAbstract<T, K> extends Field<T, K> {
 
     possibleValues: T[]
 

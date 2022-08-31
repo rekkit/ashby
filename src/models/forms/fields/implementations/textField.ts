@@ -5,7 +5,7 @@ import { FIELD_TYPE } from "../fieldType";
 /**
  * The class that represents a text field.
  */
-export class TextField extends Field<string> {
+export class TextField extends Field<string, TextField> {
 
     /**
      * The constructor.
@@ -15,7 +15,11 @@ export class TextField extends Field<string> {
      * @param required. The field that indicates whether value needs to be set or not.
      * @param validators. The validators that we want to use to constrain value.
      */
-    constructor(id: string, value: string | null, required: true, validators: Validator<string>[] = []) {
+    constructor(id: string, value: string | null, required: boolean, validators: Validator<string>[] = []) {
         super(id, FIELD_TYPE.TEXT, value, required, validators)
+    }
+
+    public duplicate(id: string): TextField {
+        return new TextField(id, this.value, this.required, this.validators)
     }
 }

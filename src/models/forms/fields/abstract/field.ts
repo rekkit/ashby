@@ -4,7 +4,7 @@ import { FIELD_TYPE } from "../fieldType";
 /**
  * The base field class.
  */
-export abstract class Field<T> {
+export abstract class Field<T, K> {
 
     // The ID of this field.
     id: string
@@ -59,4 +59,11 @@ export abstract class Field<T> {
         // If we've made it this far, the form field is valid.
         return true
     }
+
+    /**
+     * Creates a duplicate of this field.
+     * 
+     * @param id. The ID that we want to give to the new duplicate.
+     */
+    public abstract duplicate(id: string): K
 }

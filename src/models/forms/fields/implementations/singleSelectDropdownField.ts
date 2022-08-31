@@ -5,7 +5,7 @@ import { ArrayContainsValueValidator } from "../../../../validators/arrayContain
 /**
  * The class that represents a single select dropdown field.
  */
-export class SingleSelectDropdownField extends SingleSelectDropdownFieldAbstract<string> {
+export class SingleSelectDropdownField extends SingleSelectDropdownFieldAbstract<string, SingleSelectDropdownField> {
 
     /**
      * The constructor.
@@ -17,7 +17,7 @@ export class SingleSelectDropdownField extends SingleSelectDropdownFieldAbstract
      */
     constructor(
         id: string,
-        value: string,
+        value: string | null,
         required: boolean,
         possibleValues: string[]) {
 
@@ -28,5 +28,9 @@ export class SingleSelectDropdownField extends SingleSelectDropdownFieldAbstract
             required, 
             possibleValues, 
             [new ArrayContainsValueValidator<string>(possibleValues)])
+    }
+
+    public duplicate(id: string): SingleSelectDropdownField {
+        return new SingleSelectDropdownField(id, this.value, this.required, this.possibleValues)
     }
 }
